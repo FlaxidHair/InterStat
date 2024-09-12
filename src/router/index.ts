@@ -5,7 +5,6 @@ import ListItem from '../views/App-ListItem.vue'
 import Stat from '../views/App-Stat.vue'
 const router = createRouter({
   history: createWebHashHistory(),
-  // import.meta.env.BASE_URL
   routes: [
     { path: '/', component: Auth },
     { path: '/AddItem', component: AddItem },
