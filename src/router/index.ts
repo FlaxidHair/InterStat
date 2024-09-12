@@ -5,18 +5,23 @@ import ListItem from '../views/App-ListItem.vue'
 import Stat from '../views/App-Stat.vue'
 import Main from '../views/App-MainPage.vue'
 import type { RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
-import { useStore } from '@/stores/store'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 const checkAuth = (
   to: RouteLocationNormalized,
   from: RouteLocationNormalized,
   next: NavigationGuardNext
 ) => {
-  const store = useStore()
-  if (!store.userId) {
-    next('auth')
-  } else {
-    next()
-  }
+  let isAuth = false
+
+  onAuthStateChanged(getAuth(), (user) => {
+    if (user && !isAuth) {
+      isAuth = true
+      next()
+    } else if (!user && !isAuth) {
+      isAuth = true
+      next('/Auth')
+    }
+  })
 }
 
 const routes: RouteRecordRaw[] = [
