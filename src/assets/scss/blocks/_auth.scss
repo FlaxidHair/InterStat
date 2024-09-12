@@ -67,6 +67,13 @@
     @include button(11vw, 40px);
     transition: 0.2s;
   }
+
+  &__button:disabled {
+    background-color: $disabled;
+    pointer-events: none;
+    user-select: none;
+  }
+
   .password-show--btn {
     width: 2vw;
     border: none;

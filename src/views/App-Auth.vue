@@ -33,7 +33,7 @@
           </button>
         </div>
 
-        <button class="form__button">
+        <button @click="submitForm" :disabled="isLoading" class="form__button">
           <SvgIcon type="mdi" :path="mdiAccount"></SvgIcon>
           {{ logText }}
         </button>
@@ -46,7 +46,13 @@
 import { computed, ref } from 'vue'
 import { mdiAccount, mdiEye, mdiEyeClosed } from '@mdi/js'
 import SvgIcon from '@jamescoyle/vue-icon'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import router from '@/router'
+
+const isLoading = ref<boolean>(false)
+
 const isLogin = ref<boolean>(true)
+
 const subtitleText = computed<string>(() => {
   return isLogin.value ? 'Аккаунта еще нет?' : 'Уже есть аккаунт?'
 })
@@ -68,11 +74,46 @@ function closeEye(): void {
   isEyeOpen.value = false
 }
 const email = ref<string>('')
-const password = ref<string | number>('')
+const password = ref<string>('')
 
 const isPass = computed<string>(() => {
   return isEyeOpen.value ? 'text' : 'password'
 })
+
+const signUp = async (): Promise<void> => {
+  try {
+    isLoading.value = true
+    await createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+    router.push('/')
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.log(error.message)
+    }
+  } finally {
+    isLoading.value = false
+  }
+}
+const signIn = async (): Promise<void> => {
+  try {
+    isLoading.value = true
+    await signInWithEmailAndPassword(getAuth(), email.value, password.value)
+    router.push('/')
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.log(error.message)
+    }
+  } finally {
+    isLoading.value = false
+  }
+}
+
+const submitForm = (): void => {
+  if (isLogin.value) {
+    signIn()
+  } else {
+    signUp()
+  }
+}
 </script>
 
 <style scoped lang="scss">
