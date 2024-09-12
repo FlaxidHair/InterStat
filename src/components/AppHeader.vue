@@ -9,7 +9,9 @@
             </li>
           </RouterLink>
         </div>
-        <span v-if="store.userId" class="navigation__list-item">Выход</span>
+        <span v-if="!store.userId" class="navigation__list-item"
+          >Выход <SvgIcon type="mdi" :size="28" :path="mdiLogout"></SvgIcon
+        ></span>
       </ul>
     </nav>
   </header>
@@ -19,7 +21,7 @@
 import { useStore } from '@/stores/store'
 const store = useStore()
 import { RouterLink } from 'vue-router'
-import { mdiAccount, mdiPlus, mdiListBoxOutline, mdiChartBoxOutline } from '@mdi/js'
+import { mdiAccount, mdiLogout, mdiPlus, mdiListBoxOutline, mdiChartBoxOutline } from '@mdi/js'
 import SvgIcon from '@jamescoyle/vue-icon'
 import type { ComputedRef } from 'vue'
 import { ref, computed } from 'vue'
