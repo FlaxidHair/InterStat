@@ -21,7 +21,13 @@
 import { useStore } from '@/stores/store'
 const store = useStore()
 import { RouterLink } from 'vue-router'
-import { mdiAccount, mdiLogout, mdiPlus, mdiListBoxOutline, mdiChartBoxOutline } from '@mdi/js'
+import {
+  mdiAccountOutline,
+  mdiLogout,
+  mdiPlus,
+  mdiListBoxOutline,
+  mdiChartBoxOutline
+} from '@mdi/js'
 import SvgIcon from '@jamescoyle/vue-icon'
 import type { ComputedRef } from 'vue'
 import { ref, computed } from 'vue'
@@ -36,14 +42,14 @@ interface IMenuItem {
 const items = ref<IMenuItem[]>([
   {
     label: 'Авторизация',
-    icon: mdiAccount,
+    icon: mdiAccountOutline,
     path: '/Auth',
     show: computed((): boolean => !store.userId)
   },
   {
     label: 'Добавить',
     icon: mdiPlus,
-    path: '/AddItem',
+    path: '/AddItem/:id',
     show: computed((): boolean => !!store.userId)
   },
   {
@@ -53,7 +59,7 @@ const items = ref<IMenuItem[]>([
     show: computed((): boolean => !!store.userId)
   },
   {
-    label: 'Авторизация',
+    label: 'Статистика',
     icon: mdiChartBoxOutline,
     path: '/Stat',
     show: computed((): boolean => !!store.userId)

@@ -1,12 +1,20 @@
 @import './variable';
-@mixin button($width: 100px, $height: 25px, $color: $button-color) {
+@mixin button($width: 150px, $height: 35px, $color: $button-color) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   width: $width;
   height: $height;
   background-color: $color;
+  color: $main-white;
+  cursor: pointer;
+  border-radius: $border-radius-small;
+  border: none;
 }
 
 @mixin center($center: center) {
   display: flex;
-  justify-content: $center;
+  flex-flow: column;
   align-items: $center;
 }

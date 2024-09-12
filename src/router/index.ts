@@ -13,7 +13,7 @@ const checkAuth = (
 ) => {
   const store = useStore()
   if (!store.userId) {
-    next('/Auth')
+    next('auth')
   } else {
     next()
   }
@@ -21,7 +21,7 @@ const checkAuth = (
 
 const routes: RouteRecordRaw[] = [
   { path: '/', component: Main, beforeEnter: checkAuth },
-  { path: '/Auth', component: Auth, beforeEnter: checkAuth },
+  { path: '/Auth', name: 'auth', component: Auth, beforeEnter: checkAuth },
   { path: '/AddItem/:id', component: AddItem, beforeEnter: checkAuth },
   { path: '/ListItem', component: ListItem, beforeEnter: checkAuth },
   { path: '/Stat', component: Stat, beforeEnter: checkAuth }

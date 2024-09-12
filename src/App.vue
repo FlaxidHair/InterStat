@@ -18,6 +18,5 @@ import Header from './components/AppHeader.vue'
 
 .container {
   height: 100vh;
-  background-color: $main-background-color;
 }
 </style>
