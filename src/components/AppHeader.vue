@@ -9,7 +9,7 @@
             </li>
           </RouterLink>
         </div>
-        <span v-if="!store.userId" class="navigation__list-item"
+        <span v-if="store.userId" class="navigation__list-item" @click="store.userId = ''"
           >Выход <SvgIcon type="mdi" :size="28" :path="mdiLogout"></SvgIcon
         ></span>
       </ul>

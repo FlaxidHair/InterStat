@@ -9,7 +9,7 @@ import { ref } from 'vue'
 // })
 
 export const useStore = defineStore('store', () => {
-  const userId = ref<string>('')
+  const userId = ref<string>('123')
 
   return { userId }
 })
