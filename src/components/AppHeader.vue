@@ -8,19 +8,19 @@
             Авторизация
           </li>
         </RouterLink>
-        <RouterLink to="/">
+        <RouterLink to="/AddItem">
           <li class="navigation__list-item">
             <SvgIcon type="mdi" :size="28" :path="mdiPlus"></SvgIcon>
             Добавить
           </li>
         </RouterLink>
-        <RouterLink to="/">
+        <RouterLink to="/ListItem">
           <li class="navigation__list-item">
             <SvgIcon type="mdi" :size="28" :path="mdiListBoxOutline"></SvgIcon>
             Список собеседований
           </li>
         </RouterLink>
-        <RouterLink to="/">
+        <RouterLink to="/Stat">
           <li class="navigation__list-item">
             <SvgIcon type="mdi" :size="28" :path="mdiChartBoxOutline"></SvgIcon>
             Статистика
@@ -38,11 +38,11 @@ import SvgIcon from '@jamescoyle/vue-icon'
 </script>
 
 <style scoped lang="scss">
+@import '../assets/scss/global', '../assets/scss/variable';
 .header {
-  background-color: #303b44;
+  background-color: $main-color;
   padding: 15px 0;
 }
-
 .navigation {
   &__list {
     list-style-type: none;
@@ -53,18 +53,23 @@ import SvgIcon from '@jamescoyle/vue-icon'
     margin-top: 0.3em;
 
     &-item {
-      font-size: 1.6em;
-      color: white;
+      font-size: $font-size-main;
+      color: $main-white;
       transition: 0.3s;
-      border-radius: 0.4em;
-      padding: 3px;
+      border-radius: $border-radius-main;
+      padding: 5px;
       display: flex;
       align-items: center;
       column-gap: 5px;
     }
+
     &-item:hover {
       box-shadow: 0 0 0.06em 0.1em;
       transform: translateY(-2px);
+    }
+
+    &-item:active {
+      transform: scale(1.1);
     }
   }
 }

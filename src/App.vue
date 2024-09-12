@@ -4,8 +4,20 @@ import Header from './components/AppHeader.vue'
 </script>
 
 <template>
-  <Header></Header>
-  <RouterView></RouterView>
+  <div class="container">
+    <Header></Header>
+    <div class="content">
+      <RouterView></RouterView>
+    </div>
+  </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import './assets/scss/variable';
+@import './assets/scss/global';
+
+.container {
+  height: 100vh;
+  background-color: $main-background-color;
+}
+</style>
