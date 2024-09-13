@@ -35,10 +35,12 @@
               ><img src="../assets/images/telegram.svg" alt="telegram ссылка" /></a
           ></span>
           <span class="item__contact" v-if="item?.viber"
-            ><a href="#"><img src="../assets/images/viber.svg" alt="viber ссылка" /></a>
+            ><a :href="'viber://chat?number=%2B' + item.viber"
+              ><img src="../assets/images/viber.svg" alt="viber ссылка"
+            /></a>
           </span>
           <span class="item__contact" v-if="item?.phone">
-            <a href="tel:#"><img src="../assets/images/phone.svg" alt="Phone" /></a>
+            <a :href="'tel:' + item.phone"><img src="../assets/images/phone.svg" alt="Phone" /></a>
           </span>
         </td>
       </tr>
