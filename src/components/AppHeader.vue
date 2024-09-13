@@ -9,7 +9,7 @@
             </li>
           </RouterLink>
         </div>
-        <span v-if="store.userId" class="navigation__list-item" @click="store.userId = ''"
+        <span v-if="store.userId" class="navigation__list-item" @click="signOutMethod"
           >Выход <SvgIcon type="mdi" :size="28" :path="mdiLogout"></SvgIcon
         ></span>
       </ul>
@@ -31,7 +31,8 @@ import {
 import SvgIcon from '@jamescoyle/vue-icon'
 import type { ComputedRef } from 'vue'
 import { ref, computed } from 'vue'
-
+import { getAuth, signOut } from 'firebase/auth'
+import router from '../router/index'
 interface IMenuItem {
   label: string
   icon: string
@@ -65,6 +66,11 @@ const items = ref<IMenuItem[]>([
     show: computed((): boolean => !!store.userId)
   }
 ])
+
+const signOutMethod = async (): Promise<void> => {
+  await signOut(getAuth())
+  router.push('/Auth')
+}
 </script>
 
 <style scoped lang="scss">

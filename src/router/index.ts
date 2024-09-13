@@ -26,7 +26,7 @@ const checkAuth = (
 
 const routes: RouteRecordRaw[] = [
   { path: '/', component: Main, beforeEnter: checkAuth },
-  { path: '/Auth', name: 'auth', component: Auth, beforeEnter: checkAuth },
+  { path: '/Auth', name: 'auth', component: Auth },
   { path: '/AddItem/:id', component: AddItem, beforeEnter: checkAuth },
   { path: '/ListItem', component: ListItem, beforeEnter: checkAuth },
   { path: '/Stat', component: Stat, beforeEnter: checkAuth }
