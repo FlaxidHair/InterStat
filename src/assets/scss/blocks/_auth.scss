@@ -73,7 +73,12 @@
     pointer-events: none;
     user-select: none;
   }
-
+  &__button:hover {
+    transform: scale(1.03);
+  }
+  &__button:active {
+    transform: translateY(-3px);
+  }
   .password-show--btn {
     width: 2vw;
     border: none;
@@ -96,11 +101,5 @@
     width: 26vw;
     outline: none;
     border-radius: 4px 0px 0px 4px;
-  }
-  &__button:hover {
-    transform: scale(1.03);
-  }
-  &__button:active {
-    transform: translateY(-3px);
   }
 }

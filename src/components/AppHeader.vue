@@ -50,7 +50,7 @@ const items = ref<IMenuItem[]>([
   {
     label: 'Добавить',
     icon: mdiPlus,
-    path: '/AddItem/:id',
+    path: '/',
     show: computed((): boolean => !!store.userId)
   },
   {
@@ -74,5 +74,5 @@ const signOutMethod = async (): Promise<void> => {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/scss/global', '../assets/scss/variable', '../assets/scss/blocks/header';
+@import '../assets/scss/blocks/header';
 </style>
