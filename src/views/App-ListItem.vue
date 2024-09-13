@@ -46,10 +46,11 @@
       </tr>
     </table>
   </div>
+  <WindowConfirm></WindowConfirm>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, defineEmits } from 'vue'
 import {
   getFirestore,
   collection,
@@ -63,6 +64,7 @@ import { mdiTrashCanOutline, mdiPencil } from '@mdi/js'
 import SvgIcon from '@jamescoyle/vue-icon'
 import { useStore } from '@/stores/store'
 import type { IInterview } from '@/interfaces'
+import WindowConfirm from '../components/AppWindowConfirm.vue'
 const store = useStore()
 const db = getFirestore()
 
@@ -80,8 +82,24 @@ const getAllInterviews = async <T extends IInterview>(): Promise<T[]> => {
   })
 }
 
-const removeInterview = async (id: string): Promise<void> => {}
+// const removeInterview = async (id: string): Promise<void> => {
+//   console.log('123')
+// }
+interface IMyEvent {
+  type: string
+  payload: void
+}
+const emit = defineEmits<{
+  (e: 'IMyEvent', payload: any): any
+}>()
 
+const removeInterview = (): void => {
+  console.log(123)
+}
+
+function handleClick() {
+  emit('IMyEvent', removeInterview)
+}
 onMounted(async () => {
   const listInterviews: Array<IInterview> = await getAllInterviews()
   interviews.value = [...listInterviews]
