@@ -1,26 +1,13 @@
 <template>
   <div class="list">
     <h2 class="list__title title">Список собеседований</h2>
-    <!-- <div class="table">
-      <div class="table__titles">
-        <h4 class="title table__titles-title--company">Компания</h4>
-        <h4 class="title title-table table__titles-title--name">Имя HR</h4>
-        <h4 class="title title-table table__titles-title--vacansy">Вакансия</h4>
-        <h4 class="title title-table table__titles-title--contacts">Контакты</h4>
-      </div>
-      <div class="table__items">
-        <span class="table__item--company">12313</span>
-        <span class="table__item--name table__item">1</span>
-        <span class="table__item--vacansy table__item">1</span>
-        <span class="table__item--contacts table__item">1</span>
-      </div>
-    </div> -->
     <table class="table">
       <tr class="table__thead">
         <th class="table__title">Компания</th>
         <th class="table__title">Имя</th>
         <th class="table__title table__item--link">Вакансия</th>
         <th class="table__title">Контакты</th>
+        <th class="table__title table__title--edit"></th>
       </tr>
       <div></div>
       <tr v-for="item in interviews" :key="item.id" class="table__row">
@@ -43,6 +30,19 @@
             <a :href="'tel:' + item.phone"><img src="../assets/images/phone.svg" alt="Phone" /></a>
           </span>
         </td>
+        <td class="table__item table__item--func">
+          <span class="hover-f">
+            <SvgIcon class="table__item--edit" type="mdi" :path="mdiPencil" :size="24"></SvgIcon>
+          </span>
+          <span class="hover-f">
+            <SvgIcon
+              class="table__item--delete"
+              type="mdi"
+              :path="mdiTrashCanOutline"
+              :size="24"
+            ></SvgIcon>
+          </span>
+        </td>
       </tr>
     </table>
   </div>
@@ -59,6 +59,8 @@ import {
   // deleteDoc,
   // doc
 } from 'firebase/firestore'
+import { mdiTrashCanOutline, mdiPencil } from '@mdi/js'
+import SvgIcon from '@jamescoyle/vue-icon'
 import { useStore } from '@/stores/store'
 import type { IInterview } from '@/interfaces'
 const store = useStore()
@@ -77,6 +79,8 @@ const getAllInterviews = async <T extends IInterview>(): Promise<T[]> => {
     return el.data() as T
   })
 }
+
+const removeInterview = async (id: string): Promise<void> => {}
 
 onMounted(async () => {
   const listInterviews: Array<IInterview> = await getAllInterviews()
