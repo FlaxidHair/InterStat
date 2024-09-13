@@ -43,7 +43,7 @@
       @include button(14vw, 40px);
       transition: 0.2s;
     }
-    .inputs__button :disabled {
+    .inputs__button:disabled {
       background-color: $disabled;
       pointer-events: none;
       user-select: none;
