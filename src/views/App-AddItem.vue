@@ -56,8 +56,10 @@
 import { ref, computed } from 'vue'
 import type { IInterview } from '@/interfaces'
 import { v4 as uuidv4 } from 'uuid'
-import { getAuth } from 'firebase/auth'
 import { getFirestore, setDoc, doc } from 'firebase/firestore'
+import { useStore } from '@/stores/store'
+
+const store = useStore()
 
 const db = getFirestore()
 const company = ref<string>('')
@@ -82,9 +84,8 @@ const addNewInterview = async (): Promise<void> => {
     createdAt: new Date()
   }
 
-  const userId = getAuth().currentUser?.uid
-  if (userId) {
-    await setDoc(doc(db, `users/${userId}/interviews`, payload.id), payload)
+  if (store.userId) {
+    await setDoc(doc(db, `users/${store.userId}/interviews`, payload.id), payload)
       .then(() => {
         company.value = ''
         description.value = ''
