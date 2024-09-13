@@ -22,23 +22,22 @@
         <th class="table__title table__item--link">Вакансия</th>
         <th class="table__title">Контакты</th>
       </tr>
-
-      <tr class="table__row">
-        <td class="table__item">Белтаможсервис</td>
-        <td class="table__item">Андрей</td>
+      <div></div>
+      <tr v-for="item in interviews" :key="item.id" class="table__row">
+        <td class="table__item">{{ item.company }}</td>
+        <td class="table__item">{{ item.contactName }}</td>
         <td class="table__item table__item--link">
-          <a class="" href="#"
-            >https://you.com/search?q=%D0%A2%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D0%B0+%D0%B8%D0%B7+4+%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D0%BE%D0%BA+%D0%B2+html&fromSearchBar=true&tbm=youchat&cid=c0_313dbb91-f694-49d6-8f4c-1ca337052cfb</a
-          >
+          <a class="" href="#">{{ item.description }}</a>
         </td>
         <td class="table__item table__item--contacts">
           <span class="item__contact">
-            <a href="#"><img src="../assets/images/telegram.svg" alt="telegram ссылка" /></a
+            <a :href="'https://t.me/' + item.telegram" v-if="item?.telegram"
+              ><img src="../assets/images/telegram.svg" alt="telegram ссылка" /></a
           ></span>
-          <span class="item__contact"
+          <span class="item__contact" v-if="item?.viber"
             ><a href="#"><img src="../assets/images/viber.svg" alt="viber ссылка" /></a>
           </span>
-          <span class="item__contact">
+          <span class="item__contact" v-if="item?.phone">
             <a href="tel:#"><img src="../assets/images/phone.svg" alt="Phone" /></a>
           </span>
         </td>
