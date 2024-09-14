@@ -4,5 +4,6 @@ import { ref } from 'vue'
 export const useStore = defineStore('store', () => {
   const userId = ref<string>('')
   const itemId = ref<string>('') 
-  return { userId,itemId}
+  const modalActive = ref<boolean>(false)
+  return { userId,itemId,modalActive}
 })

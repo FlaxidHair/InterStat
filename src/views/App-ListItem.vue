@@ -31,14 +31,13 @@
           </span>
         </td>
         <td class="table__item table__item--func">
-          <span class="hover-f">
+          <span class="hover-f" @click="getId(item.id)">
             <SvgIcon class="table__item--edit" type="mdi" :path="mdiPencil" :size="24"></SvgIcon>
           </span>
-          <span class="hover-f">
+          <span class="hover-f" @click="getId(item.id)">
             <SvgIcon
               class="table__item--delete"
               type="mdi"
-              @click="()=>{getId(item.id)}"
               :path="mdiTrashCanOutline"
               :size="24"
             ></SvgIcon>
@@ -46,7 +45,9 @@
         </td>
       </tr>
     </table>
-    <WindowConfirm :onButtonClick="removeInterview"></WindowConfirm>
+    <Transition>
+      <WindowConfirm :onButtonClick="removeInterview"></WindowConfirm>
+    </Transition>
   </div>
 </template>
 
@@ -66,13 +67,14 @@ import SvgIcon from '@jamescoyle/vue-icon'
 import { useStore } from '@/stores/store'
 import type { IInterview } from '@/interfaces'
 import WindowConfirm from '../components/AppWindowConfirm.vue'
+
 const store = useStore()
 const db = getFirestore()
 
 const interviews = ref<IInterview[]>([])
 
-let userId = ref<string>('')
 function getId (id:string):void {
+  store.modalActive = true
   store.itemId = id
   console.log(store.itemId)
 }
@@ -88,9 +90,6 @@ const getAllInterviews = async <T extends IInterview>(): Promise<T[]> => {
     return el.data() as T
   })
 }
-
-// const removeInterview = async (id: string): Promise<void> => {
-// }
 
 const removeInterview = async (id: string): Promise<void> => {
   await deleteDoc(doc(db,`users/${store.userId}/interviews`,id))
