@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <h2 class="list__title title">Список собеседований</h2>
-    <table class="table">
+    <table v-show="!store.loading"  class="table">
       <tr class="table__thead">
         <th class="table__title">Компания</th>
         <th class="table__title">Имя</th>
@@ -9,7 +9,6 @@
         <th class="table__title">Контакты</th>
         <th class="table__title table__title--edit"></th>
       </tr>
-      <div></div>
       <tr v-for="item in interviews" :key="item.id" class="table__row">
         <td class="table__item">{{ item.company }}</td>
         <td class="table__item">{{ item.contactName }}</td>
@@ -44,11 +43,15 @@
           </span>
         </td>
       </tr>
+      <div v-show="!interviews.length" class="table__empty-status"><p class="table__empty-status--message">{{ emptyStatus }}</p>
+<RouterLink class="table__empty-status--link" to="/">Добавить?</RouterLink>
+      </div>
     </table>
+
+    </div>
     <Transition>
       <WindowConfirm :onButtonClick="removeInterview"></WindowConfirm>
     </Transition>
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -72,7 +75,7 @@ const store = useStore()
 const db = getFirestore()
 
 const interviews = ref<IInterview[]>([])
-
+const emptyStatus = ref<string>('Список собеседований, пока что пуст.')
 function getIdDelete (id:string):void {
   store.modalActive = '1'
   store.itemId = id
