@@ -72,6 +72,7 @@ const phone = ref<string>('')
 const loading = ref<boolean>(false)
 
 const addNewInterview = async (): Promise<void> => {
+  store.loading = true 
   loading.value = true
   const payload: IInterview = {
     id: uuidv4(),
@@ -96,8 +97,10 @@ const addNewInterview = async (): Promise<void> => {
       })
       .catch((error) => console.log(error.message))
   }
-
-  loading.value = false
+setTimeout(()=>{
+  store.loading = false 
+},400)
+loading.value = false
 }
 
 const disableSaveButton = computed<boolean>(() => {

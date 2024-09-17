@@ -31,10 +31,10 @@
           </span>
         </td>
         <td class="table__item table__item--func">
-          <span class="hover-f" @click="getId(item.id)">
+          <span class="hover-f" @click="getIdEdit(item.id)">
             <SvgIcon class="table__item--edit" type="mdi" :path="mdiPencil" :size="24"></SvgIcon>
           </span>
-          <span class="hover-f" @click="getId(item.id)">
+          <span class="hover-f" @click="getIdDelete(item.id)">
             <SvgIcon
               class="table__item--delete"
               type="mdi"
@@ -73,26 +73,39 @@ const db = getFirestore()
 
 const interviews = ref<IInterview[]>([])
 
-function getId (id:string):void {
-  store.modalActive = true
+function getIdDelete (id:string):void {
+  store.modalActive = '1'
   store.itemId = id
-  console.log(store.itemId)
+}
+function getIdEdit (id:string):void {
+  store.modalActive = '2'
+  store.itemId = id
 }
 
 const getAllInterviews = async <T extends IInterview>(): Promise<T[]> => {
+  store.loading = true 
   const getData = query(
     collection(db, `users/${store.userId}/interviews`),
     orderBy('createdAt', 'desc')
   )
   const listData = await getDocs(getData)
+  setTimeout(()=>{
+    store.loading = false
 
+  },300)
   return listData.docs.map((el) => {
     return el.data() as T
   })
 }
 
 const removeInterview = async (id: string): Promise<void> => {
+  store.loading = true
   await deleteDoc(doc(db,`users/${store.userId}/interviews`,id))
+.finally(()=>{
+  store.loading = false})
+  const listInterviews:Array<IInterview> = await getAllInterviews()
+    interviews.value = [...listInterviews]
+store.modalActive=''
 };
 
 onMounted(async () => {

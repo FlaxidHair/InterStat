@@ -14,6 +14,7 @@
         ></span>
       </ul>
     </nav>
+    <div v-if="store.loading" class="loader"></div>
   </header>
 </template>
 
@@ -74,5 +75,6 @@ const signOutMethod = async (): Promise<void> => {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/scss/blocks/header';
+
+@import '../assets/scss/blocks/header','../assets/scss/blocks/loader';
 </style>

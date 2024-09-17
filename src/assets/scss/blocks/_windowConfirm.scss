@@ -24,9 +24,18 @@
     &-title {
         font-size: 28px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        margin-bottom: auto;
     }
 
+    &-alert {
+        margin-top:20px;
+        margin-bottom:auto;
+        display:flex;
+        align-items: center;
+        column-gap: 5px;
+        &--message {
+            font-size:24px;
+        }
+    }
     &-actions {
         display:flex;
         column-gap:50px;
@@ -35,12 +44,11 @@
             width:5vw;
             height:35px;
             outline:none;
-            border:none;
             cursor:pointer;
             transition:0.2s;
-            color:white;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size:20px;
+            border-radius:$border-radius-small;
         }
 
         .actions-btn:hover {
@@ -51,11 +59,15 @@
           }
 
         &--confirm {
-            background-color: $button-access-color;
+            background-color: $color-danger;
+            color:$main-white;
+            border:none;
         }
 
         &--reject {
-            background-color: $color-danger;
+            background-color:$main-white;
+            color:$text-color-alternative;
+            border:1px solid $text-color-alternative;
         }
     }
 }
