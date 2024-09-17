@@ -35,8 +35,9 @@ const closeModalWindow = ($event:any) =>{
   }
 }
 
+
 </script>
 
 <style scoped lang="scss">
-@import '../assets/scss/blocks/windowConfirm';
+@import '../assets/scss/blocks/windows/windowConfirm';
 </style>

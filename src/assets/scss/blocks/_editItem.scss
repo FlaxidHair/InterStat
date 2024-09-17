@@ -1,0 +1,39 @@
+@import '../variable', '../mixins';
+
+.add-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 80vh;
+  &--inner {
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    @include center;
+    width: 30vw;
+    padding: 25px 25px 35px 25px;
+  }
+
+  &__title {
+    font-size: 34px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 3%;
+  }
+
+  &__inputs {
+    row-gap: 5px;
+    @include center;
+
+    .inputs__item {
+      width: 28vw;
+      height: 35px;
+      border: 1px solid grey;
+      border-radius: $border-radius-small;
+      outline: none;
+      padding-inline: 8px;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import Auth from '../views/App-Auth.vue'
 import AddItem from '../views/App-AddItem.vue'
 import ListItem from '../views/App-ListItem.vue'
 import Stat from '../views/App-Stat.vue'
-// import Main from '../views/App-MainPage.vue'
+import EditItem from '../views/App-EditItem.vue'
 import type { RouteRecordRaw, RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 const checkAuth = (
@@ -25,11 +25,11 @@ const checkAuth = (
 }
 
 const routes: RouteRecordRaw[] = [
-  // { path: '/', component: Main, beforeEnter: checkAuth },
   { path: '/Auth', name: 'auth', component: Auth },
-  { path: '/', component: AddItem, beforeEnter: checkAuth },
-  { path: '/ListItem', component: ListItem, beforeEnter: checkAuth },
-  { path: '/Stat', component: Stat, beforeEnter: checkAuth }
+  { path: '/',name: 'main', component: AddItem, beforeEnter: checkAuth },
+  { path: '/ListItem', name: 'list', component: ListItem, beforeEnter: checkAuth },
+  { path: '/Stat', name: 'statistics', component: Stat, beforeEnter: checkAuth },
+  { path: '/EditItem:id',name: 'edit', component: EditItem, beforeEnter: checkAuth }
 ]
 
 const router = createRouter({
