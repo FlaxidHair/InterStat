@@ -37,3 +37,40 @@
     }
   }
 }
+
+.inputs__more {
+  @include center;
+
+  &-fork {
+    display:flex;
+    width:100%;
+    column-gap:10px;
+  
+    .inputs-fork {
+      width: 13.7vw;
+      height:30px;
+      border: 1px solid grey;
+      border-radius: $border-radius-small;
+      outline: none;
+      padding-inline: 8px;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+  }
+
+  &-stages {
+    
+    &-button {
+      background-color: $button-color;
+      color:$main-white;
+      display:flex;
+      align-items: center;
+      column-gap: 5px;
+      outline:none;
+      border:none;
+      height:40px;
+      padding-inline: 10px;
+      cursor:pointer;
+    }
+  }
+}

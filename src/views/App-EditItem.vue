@@ -43,8 +43,8 @@
       </div>
       <div class="inputs__more">
         <div class="inputs__more-fork">
-            <input class="inputs__more-fork--from" type="text">
-            <input class="inputs__more-fork--to" type="text">
+            <input class="inputs__more-fork--from inputs-fork" placeholder="Зарплатная вилка ОТ" type="text">
+            <input class="inputs__more-fork--to inputs-fork" placeholder="Зарплатная вилка ДО" type="text">
         </div>
         <div class="inputs__more-stages">
             <button class="inputs__more-stages-button">
