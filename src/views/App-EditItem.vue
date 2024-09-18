@@ -60,13 +60,13 @@
                 <button class="stages-card__delete-button">Удалить этап</button>
             </div>
             <div class="inputs__more-stages-result">
+              <div class="inputs__more-stages-result--reject">
+                    <label for="reject">Отказ</label>
+                    <input type="radio" name="1" id="reject">
+                </div>
                 <div class="inputs__more-stages-result--offer">
                     <label for="offer">Оффер</label>
                     <input type="radio" name="1" id="offer">
-                </div>
-                <div class="inputs__more-stages-result--reject">
-                    <label for="reject">Отказ</label>
-                    <input type="radio" name="1" id="reject">
                 </div>
             </div>
         </div>
