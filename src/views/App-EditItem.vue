@@ -57,7 +57,7 @@
                 <input type="date" class="inputs__more-stages-card-input input--date" id="date-stage" title="Дата прохождения собеседования">
                 <label class="label" for="comm-stage">Комментарий</label>
                 <textarea id="comm-stage"  class="stages-card__comment" placeholder="Комментарий к этапу"></textarea>
-                <button class="stages-card__delete--button">Удалить этап</button>
+                <button class="stages-card__delete-button">Удалить этап</button>
             </div>
             <div class="inputs__more-stages-result">
                 <div class="inputs__more-stages-result--offer">
