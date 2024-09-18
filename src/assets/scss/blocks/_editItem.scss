@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 80vh;
+  margin-top: 3%;
   &--inner {
     -webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
@@ -28,7 +28,7 @@
     .inputs__item {
       width: 28vw;
       height: 35px;
-      border: 1px solid grey;
+      border: 1px solid $color-grey;
       border-radius: $border-radius-small;
       outline: none;
       padding-inline: 8px;
@@ -48,8 +48,8 @@
   
     .inputs-fork {
       width: 13.7vw;
-      height:30px;
-      border: 1px solid grey;
+      height:35px;
+      border: 1px solid $color-grey;
       border-radius: $border-radius-small;
       outline: none;
       padding-inline: 8px;
@@ -59,7 +59,7 @@
   }
 
   &-stages {
-    
+      width:100%;
     &-button {
       background-color: $button-color;
       color:$main-white;
@@ -73,6 +73,7 @@
       cursor:pointer;
       transition: 0.3s;
       margin-bottom: 10px;
+      border-radius: $border-radius-small;
     }
 
     &-button:hover {
@@ -82,5 +83,33 @@
       transform: translateY(-5px);
 
     }
+
+    &-card {
+      border:1px solid $color-grey;
+      padding:8px;
+      display:flex;
+      flex-flow:column;
+      width:100%;
+      row-gap:5px;
+      border-radius: $border-radius-main;
+      &-input {
+        height:35px;
+      border: 1px solid $color-grey;
+      border-radius: $border-radius-small;
+      outline: none;
+      padding-inline: 8px;
+      font-size: 18px;
+      margin-bottom: 15px;
+      }
+      .stages-card__comment {
+        height:100px;
+        width:100%;
+        resize: none;
+        outline: none;
+      padding-inline: 8px;
+      font-size: 18px;
+      }
+    }
   }
 }
+

@@ -52,11 +52,11 @@
             </button>
             <div class="inputs__more-stages-card stages-card">
                 <label class="label" for="name-stage">Название этапа</label>
-                <input type="text" id="name-stage" title="Название этапа собеседования" placeholder="Название этапа">
+                <input type="text" class="inputs__more-stages-card-input input--name" id="name-stage" title="Название этапа собеседования" placeholder="Название этапа">
                 <label class="label" for="date-stage" >Дата прохождения этапа</label>
-                <input type="date" id="date-stage" title="Дата прохождения собеседования">
-                <label class="label" for="comm-stage"></label>
-                <textarea id="comm-stage" class="stages-card__comment" placeholder="Комментарий к этапу"></textarea>
+                <input type="date" class="inputs__more-stages-card-input input--date" id="date-stage" title="Дата прохождения собеседования">
+                <label class="label" for="comm-stage">Комментарий</label>
+                <textarea id="comm-stage"  class="stages-card__comment" placeholder="Комментарий к этапу"></textarea>
                 <button class="stages-card__delete--button">Удалить этап</button>
             </div>
             <div class="inputs__more-stages-result">
