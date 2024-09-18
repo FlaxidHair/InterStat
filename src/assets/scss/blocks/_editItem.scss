@@ -36,6 +36,17 @@
       margin-bottom: 15px;
     }
   }
+
+  &__save-btn {
+      @include button(30%,40px);
+      transition:0.3s;
+  }
+  &__save-btn:hover {
+    transform: translateY(-2px);
+  }
+  &__save-btn:active {
+    transform: translateY(-5px);
+  }
 }
 
 .inputs__more {
@@ -137,7 +148,6 @@
       }
       .stages-card__delete-button:active {
         transform: translateY(-5px);
-
       }
     }
     .label {
@@ -149,7 +159,7 @@
     display:flex;
     margin-top: 20px;
     column-gap: 20px;
-
+    margin-bottom:20px;
     &--offer,&--reject {
       display:flex;
       align-items: center;
@@ -160,6 +170,7 @@
     }
     #reject,#offer {
       transform: scale(1.2);
+
     }
   }
 }
