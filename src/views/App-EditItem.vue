@@ -43,8 +43,8 @@
       </div>
       <div class="inputs__more">
         <div class="inputs__more-fork">
-            <input class="inputs__more-fork--from inputs-fork" id="forkFrom" placeholder="Зарплатная вилка ОТ" type="number">
-            <input class="inputs__more-fork--to inputs-fork" id="forkTo" placeholder="Зарплатная вилка ДО" type="number">
+            <input class="inputs__more-fork--from inputs-fork" v-model="forkFrom" id="forkFrom" placeholder="Зарплатная вилка ОТ" type="number">
+            <input class="inputs__more-fork--to inputs-fork" v-model="forkTo" id="forkTo" placeholder="Зарплатная вилка ДО" type="number">
         </div>
         <div class="inputs__more-stages">
             <button class="inputs__more-stages-button">
@@ -52,11 +52,11 @@
             </button>
             <div class="inputs__more-stages-card stages-card">
                 <label class="label" for="name-stage">Название этапа</label>
-                <input type="text" id="nameStage" class="inputs__more-stages-card-input input--name" title="Название этапа собеседования" placeholder="Название этапа">
-                <label class="label" for="date-stage" >Дата прохождения этапа</label>
-                <input type="date" id="dateStage" class="inputs__more-stages-card-input input--date" title="Дата прохождения собеседования">
+                <input type="text" id="nameStage" v-model="nameStage" class="inputs__more-stages-card-input input--name" title="Название этапа собеседования" placeholder="Название этапа">
+                <label class="label" for="date-stage">Дата прохождения этапа</label>
+                <input type="date" id="dateStage" v-model="dateStage" class="inputs__more-stages-card-input input--date" title="Дата прохождения собеседования">
                 <label class="label" for="comm-stage">Комментарий</label>
-                <textarea id="comm-stage"  class="stages-card__comment" placeholder="Комментарий к этапу"></textarea>
+                <textarea id="comm-stage" v-model="commentStage"  class="stages-card__comment" placeholder="Комментарий к этапу"></textarea>
                 <button class="stages-card__delete-button">Удалить этап</button>
             </div>
             <div class="inputs__more-stages-result">
@@ -91,7 +91,7 @@ const telegram = ref<string>('')
 const viber = ref<string>('')
 const phone = ref<string>('')
 
-const forkfrom = ref<string>('')
+const forkFrom = ref<string>('')
 const forkTo = ref<string>('')
 const nameStage = ref<string>('')
 const dateStage = ref<string>('')
