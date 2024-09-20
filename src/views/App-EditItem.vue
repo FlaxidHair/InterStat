@@ -48,7 +48,7 @@
             <input class="inputs__more-fork--to inputs-fork" v-model="interview.forkTo" id="forkTo" placeholder="Зарплатная вилка ДО" type="number">
         </div>
         <div class="inputs__more-stages">
-            <button class="inputs__more-stages-button">
+            <button class="inputs__more-stages-button" @click="addStage">
                 <SvgIcon type="mdi" :path="mdiPlus" size="24"/> Добавить этап
             </button>
             <template v-if="interview.stages">
@@ -58,8 +58,8 @@
                 <label class="label" for="date-stage">Дата прохождения этапа</label>
                 <input type="date" id="dateStage" v-model="stage.date" class="inputs__more-stages-card-input input--date" title="Дата прохождения собеседования">
                 <label class="label" for="comm-stage">Комментарий</label>
-                <textarea id="comm-stage" v-model="stage.comment"  class="stages-card__comment" placeholder="Комментарий к этапу"></textarea>
-                <button class="stages-card__delete-button">Удалить этап</button>
+                <textarea id="comm-stage" v-model="stage.comment" class="stages-card__comment" placeholder="Комментарий к этапу"></textarea>
+                <button class="stages-card__delete-button" @click="deleteStage">Удалить этап</button>
             </div>
           </template>
             <div class="inputs__more-stages-result">
@@ -105,11 +105,24 @@ const getData = async():Promise<void> =>{
   console.log(interview.value)
 }
 
-onMounted(async ()=> await getData())
+const addStage = ()=>{
+  if(interview.value) {
+    if(!interview.value.stages) {
+      interview.value.stages=[]
+    }
+    interview.value.stages.push({name:'',date:'',comment:''})
+  }
+}
 
-const nameStage = ref<string>('')
-const dateStage = ref<string>('')
-const commentStage = ref<string>('')
+const deleteStage=(index:number)=>{
+  if(interview.value) {
+    if(interview.value.stages) {
+      interview.value.stages.splice(index,1)
+    }
+  }
+}
+
+onMounted(async ()=> await getData())
 
 </script>
 
