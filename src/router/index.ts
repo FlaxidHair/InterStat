@@ -29,7 +29,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/',name: 'main', component: AddItem, beforeEnter: checkAuth },
   { path: '/ListItem', name: 'list', component: ListItem, beforeEnter: checkAuth },
   { path: '/Stat', name: 'statistics', component: Stat, beforeEnter: checkAuth },
-  { path: '/EditItem:id',name: 'edit', component: EditItem, beforeEnter: checkAuth }
+  { path: '/EditItem/:id',name: 'edit', component: EditItem, beforeEnter: checkAuth }
 ]
 
 const router = createRouter({

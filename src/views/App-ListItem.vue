@@ -70,6 +70,7 @@ import SvgIcon from '@jamescoyle/vue-icon'
 import { useStore } from '@/stores/store'
 import type { IInterview } from '@/interfaces'
 import WindowConfirm from '../components/AppWindowConfirm.vue'
+import router from '@/router'
 
 const store = useStore()
 const db = getFirestore()
@@ -110,6 +111,11 @@ const removeInterview = async (id: string): Promise<void> => {
     interviews.value = [...listInterviews]
 store.modalActive=''
 };
+
+const editInterview = ()=>{
+  store.loading=true
+
+}
 
 onMounted(async () => {
   const listInterviews: Array<IInterview> = await getAllInterviews()

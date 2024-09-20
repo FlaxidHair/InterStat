@@ -7,4 +7,13 @@ export interface IInterview {
   viber?: string
   phone?: string
   createdAt: Date
+  forkFrom?:number
+  forkTo?:number
+  stages?:IStage[]
+}
+
+export interface IStage {
+  name:string
+  date:string
+  comment:string
 }
