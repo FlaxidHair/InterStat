@@ -59,17 +59,17 @@
                 <input type="date" id="dateStage" v-model="stage.date" class="inputs__more-stages-card-input input--date" title="Дата прохождения собеседования">
                 <label class="label" for="comm-stage">Комментарий</label>
                 <textarea id="comm-stage" v-model="stage.comment" class="stages-card__comment" placeholder="Комментарий к этапу"></textarea>
-                <button class="stages-card__delete-button" @click="deleteStage">Удалить этап</button>
+                <button class="stages-card__delete-button" @click="deleteStage(index)">Удалить этап</button>
             </div>
           </template>
             <div class="inputs__more-stages-result">
               <div class="inputs__more-stages-result--reject">
                     <label for="reject">Отказ</label>
-                    <input type="radio" name="1" id="reject">
+                    <input value="Reject" type="radio" v-model="interview.result" name="1" id="reject">
                 </div>
                 <div class="inputs__more-stages-result--offer">
                     <label for="offer">Оффер</label>
-                    <input type="radio" name="1" id="offer">
+                    <input value="Offer" type="radio" v-model="interview.result" name="1" id="offer">
                 </div>
             </div>
         </div>
@@ -102,7 +102,6 @@ const getData = async():Promise<void> =>{
   const docMeta= await getDoc(docref);
   interview.value = docMeta.data() as IInterview
   store.loading = false
-  console.log(interview.value)
 }
 
 const addStage = ()=>{

@@ -10,6 +10,7 @@ export interface IInterview {
   forkFrom?:number
   forkTo?:number
   stages?:IStage[]
+  result:'Offer' | 'Reject'
 }
 
 export interface IStage {
