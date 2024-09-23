@@ -32,7 +32,11 @@
             <a :href="'tel:' + item.phone"><img src="../assets/images/phone.svg" alt="Phone" /></a>
           </span>
         </td>
-        <td class="table__item table__item--stages">{{ item.stages }}</td>
+        <td class="table__item table__item--stages">
+          <span class="table__item--stages-list" style="width:20%;" v-for="(stage,index) in item.stages" :key="index"> 
+              <span class="item-stage--index" :data-stage="stage.name">{{ index+1 }}</span>     
+          </span>
+        </td>
         <td class="table__item table__item--fork">{{ item.forkFrom }} - {{ item.forkTo }}</td>
         <td class="table__item table__item--result"><span class="text-result" :class="showResult(item.result)">{{ item.result }}</span></td>
         <td class="table__item table__item--func">

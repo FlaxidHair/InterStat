@@ -12,13 +12,14 @@
 }
 
 .table {
-  width: 75vw;
+  width: 80vw;
   border-collapse: collapse;
   table-layout: fixed;
 
   &__thead {
     background-color: $main-background-color;
     height: 50px;
+    
   }
 
   &__row {
@@ -39,7 +40,7 @@
   .table__item {
     height: 50px;
     text-align: start;
-    overflow: hidden;
+
     text-overflow: ellipsis;
     white-space: nowrap;
     padding: 8px;
@@ -155,4 +156,33 @@
 
 .text-result-offer {
   background-color: $button-access-color;
+}
+
+.table__item--stages {
+  width:25%;
+}
+
+.item-stage--index {
+  position:relative;
+  padding-inline: 5px;
+  border-radius:50%;
+  background-color: $button-color;
+  color:white;
+  z-index:150;
+  font-size: 18px;
+  cursor:help;
+}
+
+
+.table__item--stages-list {
+  margin-right: 5px;
+}
+.item-stage--index:hover::after {
+  content:attr(data-stage);
+  position:absolute;
+  color:black;
+  top:-30px;
+  padding-inline: 5px;
+  border:1px solid;
+  border-radius: 6px;
 }
