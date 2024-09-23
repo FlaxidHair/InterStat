@@ -32,7 +32,6 @@ const routes: RouteRecordRaw[] = [
   { path: '/EditItem/:id',name: 'edit', component: EditItem, beforeEnter: checkAuth }
 ]
 
-console.log(routes)
 
 const router = createRouter({
   history: createWebHashHistory(),

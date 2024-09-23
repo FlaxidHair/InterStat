@@ -47,6 +47,11 @@
   &__save-btn:active {
     transform: translateY(-7px);
   }
+  &__save-btn:disabled {
+    background-color: $disabled;
+    pointer-events: none;
+    user-select: none;
+  }
 }
 
 .inputs__more {

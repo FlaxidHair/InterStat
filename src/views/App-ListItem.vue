@@ -77,10 +77,12 @@ const db = getFirestore()
 
 const interviews = ref<IInterview[]>([])
 const emptyStatus = ref<string>('Список собеседований, пока что пуст.')
+
 function getIdDelete (id:string):void {
   store.modalActive = '1'
   store.itemId = id
 }
+
 function getIdEdit (id:string):void {
   store.itemId = id
   router.push(`/EditItem/${id}`)
@@ -92,11 +94,12 @@ const getAllInterviews = async <T extends IInterview>(): Promise<T[]> => {
     collection(db, `users/${store.userId}/interviews`),
     orderBy('createdAt', 'desc')
   )
+
   const listData = await getDocs(getData)
   setTimeout(()=>{
     store.loading = false
-
   },300)
+
   return listData.docs.map((el) => {
     return el.data() as T
   })
@@ -108,14 +111,9 @@ const removeInterview = async (id: string): Promise<void> => {
 .finally(()=>{
   store.loading = false})
   const listInterviews:Array<IInterview> = await getAllInterviews()
-    interviews.value = [...listInterviews]
-store.modalActive=''
+  interviews.value = [...listInterviews]
+  store.modalActive=''
 };
-
-// const editInterview = ()=>{
-//   store.loading=true
-
-// }
 
 onMounted(async () => {
   const listInterviews: Array<IInterview> = await getAllInterviews()

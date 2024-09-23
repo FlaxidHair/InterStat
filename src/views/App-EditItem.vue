@@ -1,8 +1,8 @@
 <template>
-    <div  v-if="interview?.id && !store.loading">
+    <div  v-if="interview?.id">
         <div class="add-item">
     <div class="add-item--inner">
-      <h2 class="title add-item__title">Собеседование в компанию {{ interview?.company }}</h2>
+      <h2 class="title add-item__title">Собеседование в компанию {{ interview?.company }}</h2>     
       <div class="add-item__inputs inputs">
         <input
           type="text"
@@ -74,7 +74,7 @@
             </div>
         </div>
       </div>
-      <button class="add-item__save-btn"><SvgIcon :path="mdiContentSave" type="mdi"/> Сохранить</button>
+      <button :disabled="store.loading" class="add-item__save-btn" @click="saveInterview"><SvgIcon :path="mdiContentSave" type="mdi"/> Сохранить</button>
     </div>
   </div>
     </div>
@@ -87,7 +87,7 @@ import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiPlus,mdiContentSave } from '@mdi/js';
 import type { IInterview } from '@/interfaces';
 import {useRoute} from 'vue-router';
-import { getFirestore,doc,getDoc } from 'firebase/firestore';
+import { getFirestore,doc,getDoc,updateDoc } from 'firebase/firestore';
 
 const store = useStore()
 const route =useRoute()
@@ -119,6 +119,13 @@ const deleteStage=(index:number)=>{
       interview.value.stages.splice(index,1)
     }
   }
+}
+
+const saveInterview = async (): Promise<void> =>{
+  store.loading = true 
+  await updateDoc(docref,{...interview.value})
+  await getData()
+  store.loading = false
 }
 
 onMounted(async ()=> await getData())
