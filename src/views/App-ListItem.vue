@@ -7,13 +7,16 @@
         <th class="table__title">Имя</th>
         <th class="table__title table__item--link">Вакансия</th>
         <th class="table__title">Контакты</th>
+        <th class="table__title">Пройденные этапы</th>
+        <th class="table__title">Зарплатная вилка</th>
+        <th class="table__title">Результат</th>
         <th class="table__title table__title--edit"></th>
       </tr>
       <tr v-for="item in interviews" :key="item.id" class="table__row">
         <td class="table__item">{{ item.company }}</td>
         <td class="table__item">{{ item.contactName }}</td>
         <td class="table__item table__item--link">
-          <a class="" href="#">{{ item.description }}</a>
+          <a class="table__item--link-text" :href="item.description">Ссылка на вакансию...</a>
         </td>
         <td class="table__item table__item--contacts">
           <span class="item__contact">
@@ -29,6 +32,9 @@
             <a :href="'tel:' + item.phone"><img src="../assets/images/phone.svg" alt="Phone" /></a>
           </span>
         </td>
+        <td class="table__item table__item--stages">{{ item.stages }}</td>
+        <td class="table__item table__item--fork">{{ item.forkFrom }} - {{ item.forkTo }}</td>
+        <td class="table__item table__item--result"><span class="text-result" :class="showResult(item.result)">{{ item.result }}</span></td>
         <td class="table__item table__item--func">
           <span class="hover-f" @click="getIdEdit(item.id)">
             <SvgIcon class="table__item--edit" type="mdi" :path="mdiPencil" :size="24"></SvgIcon>
@@ -65,7 +71,7 @@ import {
   deleteDoc,
   doc
 } from 'firebase/firestore'
-import { mdiTrashCanOutline, mdiPencil } from '@mdi/js'
+import { mdiTrashCanOutline, mdiPencil} from '@mdi/js'
 import SvgIcon from '@jamescoyle/vue-icon'
 import { useStore } from '@/stores/store'
 import type { IInterview } from '@/interfaces'
@@ -114,6 +120,14 @@ const removeInterview = async (id: string): Promise<void> => {
   interviews.value = [...listInterviews]
   store.modalActive=''
 };
+
+const showResult = (result:string)=>{
+  if(result==='Отказ') {
+    return 'text-result-reject'
+  }else {
+    return 'text-result-offer'
+  }
+}
 
 onMounted(async () => {
   const listInterviews: Array<IInterview> = await getAllInterviews()

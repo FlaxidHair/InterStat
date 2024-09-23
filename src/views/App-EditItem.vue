@@ -65,11 +65,11 @@
             <div class="inputs__more-stages-result">
               <div class="inputs__more-stages-result--reject">
                     <label for="reject">Отказ</label>
-                    <input value="Reject" type="radio" v-model="interview.result" name="1" id="reject">
+                    <input value="Отказ" type="radio" v-model="interview.result" name="1" id="reject">
                 </div>
                 <div class="inputs__more-stages-result--offer">
                     <label for="offer">Оффер</label>
-                    <input value="Offer" type="radio" v-model="interview.result" name="1" id="offer">
+                    <input value="Оффер" type="radio" v-model="interview.result" name="1" id="offer">
                 </div>
             </div>
         </div>
