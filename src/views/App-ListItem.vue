@@ -38,7 +38,7 @@
           </span>
         </td>
         <td class="table__item table__item--fork">{{ item.forkFrom }} - {{ item.forkTo }}</td>
-        <td class="table__item table__item--result"><span class="text-result" :class="showResult(item.result)">{{ item.result }}</span></td>
+        <td class="table__item table__item--result" ><span class="text-result" :class="showResult(item.result)">{{ item?.result }}</span></td>
         <td class="table__item table__item--func">
           <span class="hover-f" @click="getIdEdit(item.id)">
             <SvgIcon class="table__item--edit" type="mdi" :path="mdiPencil" :size="24"></SvgIcon>
@@ -128,8 +128,10 @@ const removeInterview = async (id: string): Promise<void> => {
 const showResult = (result:string)=>{
   if(result==='Отказ') {
     return 'text-result-reject'
-  }else {
+  }else if(result==='Оффер'){
     return 'text-result-offer'
+  }else {
+    return 'text-result-unknown'
   }
 }
 

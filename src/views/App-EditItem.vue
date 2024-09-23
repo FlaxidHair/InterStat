@@ -128,6 +128,7 @@ const saveInterview = async (): Promise<void> =>{
   store.loading = false
 }
 
+
 onMounted(async ()=> await getData())
 
 </script>
