@@ -12,14 +12,13 @@
 }
 
 .table {
-  width: 80vw;
+  width: 70vw;
   border-collapse: collapse;
-  table-layout: fixed;
+  // table-layout: fixed;
 
   &__thead {
     background-color: $main-background-color;
     height: 50px;
-    
   }
 
   &__row {
@@ -29,12 +28,15 @@
   .table__title {
     padding: 8px;
     text-align: start;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 300;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
     &--edit {
       width: 10%;
+    }
+
+    &--stages{
+      text-wrap: nowrap;
     }
   }
   .table__item {
@@ -177,12 +179,32 @@
 .table__item--stages-list {
   margin-right: 5px;
 }
+
+.table__item--stages {
+  width:12%;
+}
 .item-stage--index:hover::after {
   content:attr(data-stage);
   position:absolute;
   color:black;
-  top:-30px;
+  bottom:-30px;
+  left:-50px;
   padding-inline: 5px;
   border:1px solid;
   border-radius: 6px;
+}
+
+.item-stage--index:active::after {
+  content:attr(data-stage);
+  position:absolute;
+  color:black;
+  bottom:-30px;
+  left:-50px;
+  padding-inline: 5px;
+  border:1px solid;
+  border-radius: 6px;
+}
+
+.table__title--fork {
+  width:15%;
 }

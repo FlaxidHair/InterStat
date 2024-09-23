@@ -7,9 +7,9 @@
         <th class="table__title">Имя</th>
         <th class="table__title table__item--link">Вакансия</th>
         <th class="table__title">Контакты</th>
-        <th class="table__title">Пройденные этапы</th>
-        <th class="table__title">Зарплатная вилка</th>
-        <th class="table__title">Результат</th>
+        <th class="table__title table__title--stages">Пройденные этапы</th>
+        <th class="table__title table__title--fork">Зарплатная вилка</th>
+        <th class="table__title table__title--result">Результат</th>
         <th class="table__title table__title--edit"></th>
       </tr>
       <tr v-for="item in interviews" :key="item.id" class="table__row">
