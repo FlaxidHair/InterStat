@@ -63,7 +63,7 @@ import {
   orderBy,
   getDocs,
   deleteDoc,
-doc
+  doc
 } from 'firebase/firestore'
 import { mdiTrashCanOutline, mdiPencil } from '@mdi/js'
 import SvgIcon from '@jamescoyle/vue-icon'
@@ -82,8 +82,8 @@ function getIdDelete (id:string):void {
   store.itemId = id
 }
 function getIdEdit (id:string):void {
-  store.modalActive = '2'
   store.itemId = id
+  router.push(`/EditItem/${id}`)
 }
 
 const getAllInterviews = async <T extends IInterview>(): Promise<T[]> => {
@@ -112,10 +112,10 @@ const removeInterview = async (id: string): Promise<void> => {
 store.modalActive=''
 };
 
-const editInterview = ()=>{
-  store.loading=true
+// const editInterview = ()=>{
+//   store.loading=true
 
-}
+// }
 
 onMounted(async () => {
   const listInterviews: Array<IInterview> = await getAllInterviews()

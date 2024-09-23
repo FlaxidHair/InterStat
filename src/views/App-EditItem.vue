@@ -85,9 +85,9 @@ import { onMounted, ref } from 'vue'
 import { useStore } from '@/stores/store'
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiPlus,mdiContentSave } from '@mdi/js';
-import type { IInterview,IStage } from '@/interfaces';
+import type { IInterview } from '@/interfaces';
 import {useRoute} from 'vue-router';
-import { getFirestore,doc,getDoc,updateDoc } from 'firebase/firestore';
+import { getFirestore,doc,getDoc } from 'firebase/firestore';
 
 const store = useStore()
 const route =useRoute()
