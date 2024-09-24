@@ -1,6 +1,18 @@
 <template>
   <div class="list">
     <h2 class="list__title title">Список собеседований</h2>
+    <div class="list__filter">
+              <div class="list__filter-reject list__filter-item">
+                    <label for="reject">Отказ</label>
+                    <input value="Отказ" type="radio" v-model="selectedFilter" name="1" id="reject">
+                </div>
+                <div class="list__filter-offer list__filter-item">
+                    <label for="offer">Оффер</label>
+                    <input value="Оффер" type="radio" v-model="selectedFilter" name="1" id="offer">
+                </div>
+                <button :disabled="!selectedFilter" class="list__filter--btn-accept" @click="getFilterData">Подтвердить</button>
+                <button :disabled="!selectedFilter" class="list__filter--btn-reset" @click="resetFilterData">Сбросить</button>
+            </div>
     <table v-show="!store.loading"  class="table">
       <tr class="table__thead">
         <th class="table__title">Компания</th>
@@ -73,7 +85,8 @@ import {
   orderBy,
   getDocs,
   deleteDoc,
-  doc
+  doc,
+  where
 } from 'firebase/firestore'
 import { mdiTrashCanOutline, mdiPencil} from '@mdi/js'
 import SvgIcon from '@jamescoyle/vue-icon'
@@ -81,6 +94,8 @@ import { useStore } from '@/stores/store'
 import type { IInterview } from '@/interfaces'
 import WindowConfirm from '../components/AppWindowConfirm.vue'
 import router from '@/router'
+
+const selectedFilter = ref<string>('')
 
 const store = useStore()
 const db = getFirestore()
@@ -98,18 +113,28 @@ function getIdEdit (id:string):void {
   router.push(`/EditItem/${id}`)
 }
 
-const getAllInterviews = async <T extends IInterview>(): Promise<T[]> => {
+const getAllInterviews = async <T extends IInterview>(isFilter?: boolean): Promise<T[]> => {
   store.loading = true 
-  const getData = query(
+  let getData;
+
+  if(isFilter) {
+    getData = query(
+    collection(db, `users/${store.userId}/interviews`),
+    orderBy('createdAt', 'desc'),
+    where('result','==',selectedFilter.value)
+  )
+
+  } else {
+    getData=query(
     collection(db, `users/${store.userId}/interviews`),
     orderBy('createdAt', 'desc')
   )
+  }
 
   const listData = await getDocs(getData)
   setTimeout(()=>{
     store.loading = false
   },300)
-
   return listData.docs.map((el) => {
     return el.data() as T
   })
@@ -125,7 +150,7 @@ const removeInterview = async (id: string): Promise<void> => {
   store.modalActive=''
 };
 
-const showResult = (result:string)=>{
+const showResult = (result:string | undefined)=>{
   if(result==='Отказ') {
     return 'text-result-reject'
   }else if(result==='Оффер'){
@@ -133,6 +158,18 @@ const showResult = (result:string)=>{
   }else {
     return 'text-result-unknown'
   }
+}
+
+const getFilterData = async():Promise<void> =>{
+  const listInterviews: Array<IInterview> = await getAllInterviews(true)
+    interviews.value = listInterviews
+}
+
+const resetFilterData = async():Promise<void> =>{
+  store.loading=true
+  const listInterviews: Array<IInterview> = await getAllInterviews(false)
+    interviews.value = [...listInterviews]
+  store.loading=false
 }
 
 onMounted(async () => {

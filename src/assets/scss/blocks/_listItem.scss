@@ -174,7 +174,6 @@
   border-radius:50%;
   background-color: $button-color;
   color:white;
-  z-index:150;
   font-size: 18px;
   cursor:help;
 }
@@ -212,3 +211,63 @@
 .table__title--fork {
   width:15%;
 }
+
+.list__filter {
+  display:flex;
+  column-gap: 20px;
+  align-self: start;
+  margin-left:15vw;
+  margin-bottom: 1%;
+
+  &-item {
+    display:flex;
+    column-gap:5px;
+    font-size:24px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    #reject,#offer {
+      width:20px;
+      cursor:pointer;
+    }
+  }
+
+  &--btn-accept {
+    @include button(125px,35px);
+    font-size:18px;
+  }
+
+  &--btn-accept:hover {
+    transition: 0.3s;
+    transform:translateY(-2px);
+    cursor: pointer;
+  }
+  &--btn-accept:active {
+    transform: translateY(-7px);
+  }
+
+  &--btn-reset {
+    @include button(125px,35px,$color-danger);
+    font-size:18px;
+  }
+
+  &--btn-reset:hover {
+    transition: 0.3s;
+    transform:translateY(-2px);
+    cursor: pointer;
+  }
+  &--btn-reset:active {
+    transform: translateY(-7px);
+  }
+
+  &--btn-reset:disabled {
+    background-color:#d4495067 ;
+    pointer-events: none;
+    user-select: none;
+  }
+  &--btn-accept:disabled {
+    background-color: #39728e81;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
