@@ -1,7 +1,13 @@
 <template>
-  <div>Stat</div>
+  <div>
+<BarChart></BarChart>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import BarChart from '../components/AppPieChart.vue'
+</script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+
+</style>
