@@ -1,6 +1,7 @@
 <template>
   <div class="stat">
-    <Doughnut class="stat" :data="chartData" ></Doughnut>
+    <h2 class="stat__title">Статистика собеседований</h2>
+    <Doughnut class="stat__table" :data="chartData"></Doughnut>
   </div>
 </template>
 
@@ -16,23 +17,18 @@ chartJS.register(
   labels:[
     'Оффер',
     'Отказ',
+    'В ожидании',
   ],
   datasets:[
     {
-      label:['Data One',"Data Two"],
-      backgroundColor:["red","green"],
-      fill:false,
-      data:[10,20],
-      
+      label:'Собеседований',
+      backgroundColor:["#d44950","#59a969",'#4f5a6e'],
+      data:[10,20,5],
     },
   ]
  }
 </script>
 
 <style lang="scss" scoped>
-
-.stat {
-  width:50vw;
-  height:50vh;
-}
+@import '../assets/scss/blocks/PieChart';
 </style>

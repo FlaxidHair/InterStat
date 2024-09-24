@@ -1,6 +1,6 @@
 <template>
-  <div>
-<BarChart></BarChart>
+  <div class="stat">
+<BarChart class="stat__table"></BarChart>
   </div>
 </template>
 
@@ -9,5 +9,4 @@ import BarChart from '../components/AppPieChart.vue'
 </script>
 
 <style lang="scss" scoped>
-
 </style>
