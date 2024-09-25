@@ -46,7 +46,7 @@
 import { computed, ref } from 'vue'
 import { mdiAccount, mdiEye, mdiEyeClosed } from '@mdi/js'
 import SvgIcon from '@jamescoyle/vue-icon'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth,sendPasswordResetEmail,sendEmailVerification, createUserWithEmailAndPassword, signInWithEmailAndPassword, type User } from 'firebase/auth'
 import router from '@/router'
 
 const isLoading = ref<boolean>(false)
@@ -114,6 +114,45 @@ const submitForm = (): void => {
     signUp()
   }
 }
+
+
+
+
+const resetPassword=async ():Promise<void> =>{
+  sendPasswordResetEmail(getAuth(), email.value)
+  .then(() => {
+    console.log('PasswordSend')
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+
+}
+
+const auth=getAuth().currentUser
+
+const confirmEmail=async ():Promise<void> =>{
+  if(auth){
+    sendEmailVerification(auth)
+  .then(() => {
+    console.log('PasswordSend')
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+  }
+  
+}
+
+
+
+
+
+
 </script>
 
 <style scoped lang="scss">

@@ -60,7 +60,6 @@ import { getFirestore, setDoc, doc } from 'firebase/firestore'
 import { useStore } from '@/stores/store'
 
 const store = useStore()
-
 const db = getFirestore()
 const company = ref<string>('')
 const description = ref<string>('')

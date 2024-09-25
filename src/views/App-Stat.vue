@@ -55,7 +55,7 @@ const chartData = () => {
   }
 }
 
-const getAllInterviews = async <T extends IInterview>(isFilter?: boolean): Promise<T[]> => {
+const getAllInterviews = async <T extends IInterview>(): Promise<T[]> => {
   store.loading = true
 
   const getData = query(
