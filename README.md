@@ -12,7 +12,7 @@
 
 ИЛИ
 
-Клонируйте репозиторий, командой - git clone [https://github.com/FlaxidHair/StepByStep.git](https://github.com/FlaxidHair/InterStat.git)
+Клонируйте репозиторий, командой - git clone https://github.com/FlaxidHair/InterStat.git
 
 Установите все зависимости, командой - npm install 
 
