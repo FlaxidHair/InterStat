@@ -1,45 +1,36 @@
-# package.json
+# Проект InterStat
 
-This template should help get you started developing with Vue 3 in Vite.
+Список собеседований InterStat — это веб-приложение, разработанное с использованием Vue 3 Composition API на TypeScript. Приложение позволяет пользователям регистрироваться, авторизовываться и управлять своими собеседованиями. Данные хранятся в Firebase, что обеспечивает надежное и масштабируемое решение для хранения информации.
 
-## Recommended IDE Setup
+### Проект адекватно работает на 1920px и выше
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Начало работы 
 
-## Type Support for `.vue` Imports in TS
+Чтобы пользоваться сервисом, необходимо зарегистрироваться!
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Если вы хотите просмотреть проект сразу , то перейдите по ссылке - [Деплой](todo-f8f9e.web.app/#/)
 
-## Customize configuration
+ИЛИ
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Клонируйте репозиторий, командой - git clone [https://github.com/FlaxidHair/StepByStep.git](https://github.com/FlaxidHair/InterStat.git)
 
-## Project Setup
+Установите все зависимости, командой - npm install 
 
-```sh
-npm install
-```
+Запустите проект, командой - npm run dev
 
-### Compile and Hot-Reload for Development
+Теперь вы можете открыть браузер и перейти по предложенному адресу в терминале, чтобы увидеть приложение в действии!
 
-```sh
-npm run dev
-```
+## Функциональные возможности
+- Регистрация пользователей: Создание нового аккаунта с использованием электронной почты и пароля.
+- Авторизация: Вход в систему для доступа к функционалу приложения.
+- Добавление / редактирование / удаление и просмотр списка собеседований.
+- Просмотр статистики собеседований ( в ожиданнии / reject / offer )
+- Фильтрация собеседований по статусу. 
 
-### Type-Check, Compile and Minify for Production
+## Технологии
+- Vue 3, Composition API, TypeScript: Основной фреймворк для создания пользовательского интерфейса.
+- Vue Router: Для управления маршрутизацией в приложении.
+- Pinia: Для управления состоянием приложения.
+- Firebase: База данных. 
 
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+### Если у вас остались вопросы, вы можете написать мне на почту - gaevolix@gmail.com
