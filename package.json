@@ -17,6 +17,7 @@
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.4.47",
     "chart.js": "^4.4.4",
+    "dotenv": "^16.4.5",
     "firebase": "^10.13.1",
     "pinia": "^2.1.7",
     "uuid": "^10.0.0",
